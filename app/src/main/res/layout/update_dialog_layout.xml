@@ -13,12 +13,14 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/edtID"
+    <TextView
+        android:id="@+id/tvID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter ID"
         android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="3dd96aaf-65ac-472a-9c1c-ccfcf02abca0"
+        android:textSize="18sp"
         android:layout_below="@+id/tvUpdate"/>
 
     <EditText
@@ -27,7 +29,7 @@
         android:layout_height="wrap_content"
         android:hint="Enter Name"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/edtID"/>
+        android:layout_below="@+id/tvID"/>
 
     <EditText
         android:id="@+id/edtEmail"

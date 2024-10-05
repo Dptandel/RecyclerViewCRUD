@@ -58,11 +58,11 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val customView = LayoutInflater.from(this).inflate(R.layout.update_dialog_layout, null)
 
-        val edtID: EditText = customView.findViewById(R.id.edtID)
+        val tvID: TextView = customView.findViewById(R.id.tvID)
         val edtName: EditText = customView.findViewById(R.id.edtName)
         val edtEmail: EditText = customView.findViewById(R.id.edtEmail)
 
-        edtID.setText(user.id)
+        tvID.text = user.id
         edtName.setText(user.userName)
         edtEmail.setText(user.userEmail)
 
