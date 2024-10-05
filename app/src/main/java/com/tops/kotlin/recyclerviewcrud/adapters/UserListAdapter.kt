@@ -4,12 +4,20 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.tops.kotlin.recyclerviewcrud.R
 import com.tops.kotlin.recyclerviewcrud.databinding.ItemUserLayoutBinding
 import com.tops.kotlin.recyclerviewcrud.models.User
 
-class UserListAdapter(private val context: Context, private val userList: MutableList<User>) :
+class UserListAdapter(
+    private val context: Context,
+    private val userList: MutableList<User>,
+    private var itemClicked: ((user: User) -> Unit)? = null
+) :
     Adapter<UserListAdapter.UserViewHolder>() {
 
     inner class UserViewHolder(val binding: ItemUserLayoutBinding) : ViewHolder(binding.root)
@@ -33,6 +41,10 @@ class UserListAdapter(private val context: Context, private val userList: Mutabl
         holder.binding.ivDelete.setOnClickListener {
             deleteUser(user.id)
         }
+
+        holder.binding.ivUpdate.setOnClickListener {
+            itemClicked?.invoke(user)
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -40,11 +52,23 @@ class UserListAdapter(private val context: Context, private val userList: Mutabl
         userList.add(user)
         notifyDataSetChanged()
     }
+
     @SuppressLint("NotifyDataSetChanged")
     fun deleteUser(id: String) {
         userList.removeIf {
             it.id == id
         }
+        notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateUser(user: User) {
+        val index = userList.indexOfFirst {
+            it.id == user.id
+        }
+
+        userList[index] = user
+
         notifyDataSetChanged()
     }
 

@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="2dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="16dp">
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -22,12 +22,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="ID : 12" />
+                android:padding="8dp"
+                android:text="3dd96aaf-65ac-472a-9c1c-ccfcf02abca0" />
+
+            <ImageView
+                android:id="@+id/ivUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:src="@drawable/ic_update" />
 
             <ImageView
                 android:id="@+id/ivDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:padding="8dp"
                 android:src="@drawable/ic_delete" />
 
         </LinearLayout>
@@ -36,13 +45,14 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
+            android:padding="8dp"
             android:text="Dharmin Tandel" />
 
         <TextView
             android:id="@+id/tvUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="dharmin@gmail.com" />
 
     </LinearLayout>

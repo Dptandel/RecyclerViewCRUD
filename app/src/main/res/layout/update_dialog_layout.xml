@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Details"
-        android:layout_centerHorizontal="true"
+        android:text="Update Details"
         android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/edtID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter ID"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/tvUpdate"/>
 
     <EditText
         android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Enter Name"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/tvTitle"
-        android:hint="Enter Name" />
+        android:layout_below="@+id/edtID"/>
 
     <EditText
         android:id="@+id/edtEmail"
@@ -33,19 +38,21 @@
         android:hint="Enter Email" />
 
     <Button
-        android:id="@+id/btnSubmit"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
-        android:textSize="18sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edtEmail"
-        android:text="Submit" />
+        android:text="Update"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_below="@id/edtEmail"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userRecyclerView"
+    <Button
+        android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnSubmit"
-        android:layout_marginTop="16dp" />
+        android:text="Cancel"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_below="@id/btnUpdate"/>
 
 </RelativeLayout>
