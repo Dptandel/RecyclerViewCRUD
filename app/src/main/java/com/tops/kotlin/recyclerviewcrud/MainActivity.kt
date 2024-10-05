@@ -1,5 +1,6 @@
 package com.tops.kotlin.recyclerviewcrud
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Button
@@ -20,16 +21,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var userAdapter: UserListAdapter
-    private lateinit var userList: MutableList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        userAdapter = UserListAdapter(this, mutableListOf()) { user: User ->
+        userAdapter = UserListAdapter(this, mutableListOf(), onUpdate = { user: User ->
             showUpdateDialog(user)
-        }
+        }, onDelete = { id: String ->
+            showDeleteDialog(id)
+        })
 
         binding.userRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.userRecyclerView.adapter = userAdapter
@@ -52,6 +54,17 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please enter both name and email", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun showDeleteDialog(id: String) {
+        AlertDialog.Builder(this).apply {
+            setTitle("Delete User")
+            setMessage("Are you sure you want to delete ?")
+        }.setPositiveButton("Delete", DialogInterface.OnClickListener { dialog, which ->
+            userAdapter.deleteUser(id)
+        }).setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
+            dialog.dismiss()
+        }).show()
     }
 
     private fun showUpdateDialog(user: User) {

@@ -16,7 +16,8 @@ import com.tops.kotlin.recyclerviewcrud.models.User
 class UserListAdapter(
     private val context: Context,
     private val userList: MutableList<User>,
-    private var itemClicked: ((user: User) -> Unit)? = null
+    private var onUpdate: ((user: User) -> Unit)? = null,
+    private var onDelete: ((id: String) -> Unit)? = null
 ) :
     Adapter<UserListAdapter.UserViewHolder>() {
 
@@ -39,29 +40,30 @@ class UserListAdapter(
         holder.binding.tvUserEmail.text = user.userEmail
 
         holder.binding.ivDelete.setOnClickListener {
-            deleteUser(user.id)
+            onDelete?.invoke(user.id)
         }
 
         holder.binding.ivUpdate.setOnClickListener {
-            itemClicked?.invoke(user)
+            onUpdate?.invoke(user)
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun addUser(user: User) {
         userList.add(user)
-        notifyDataSetChanged()
+//        notifyDataSetChanged()  //whole data list refresh
+
+        notifyItemInserted(userList.size - 1)  // for specific item
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun deleteUser(id: String) {
         userList.removeIf {
             it.id == id
         }
-        notifyDataSetChanged()
+//        notifyDataSetChanged()  //whole data list refresh
+
+        notifyItemRemoved(userList.size - 1)   // for specific item
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun updateUser(user: User) {
         val index = userList.indexOfFirst {
             it.id == user.id
@@ -69,7 +71,9 @@ class UserListAdapter(
 
         userList[index] = user
 
-        notifyDataSetChanged()
+//        notifyDataSetChanged()  //whole data list refresh
+
+        notifyItemChanged(index)  // for specific item
     }
 
 }

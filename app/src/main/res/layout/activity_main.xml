@@ -2,17 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Details"
         android:layout_centerHorizontal="true"
+        android:text="User Details"
         android:textSize="22sp"
         android:textStyle="bold" />
 
@@ -20,8 +20,8 @@
         android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="16dp"
         android:hint="Enter Name" />
 
     <EditText
@@ -34,12 +34,12 @@
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
-        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:layout_below="@id/edtEmail"
-        android:text="Submit" />
+        android:layout_centerHorizontal="true"
+        android:text="Submit"
+        android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/userRecyclerView"
